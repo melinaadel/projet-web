@@ -96,3 +96,9 @@ Ce lieu offre :
 une déconnexion totale du quotidien
 une immersion dans un univers apaisant
 une exploration du rêve et de la créativité
+
+https://fr.pinterest.com/pin/14847873767803698/
+
+ https://fr.pinterest.com/pin/914862421292479/
+ https://fr.pinterest.com/pin/3588874697364630/
+ https://fr.pinterest.com/pin/217791331978099879/
