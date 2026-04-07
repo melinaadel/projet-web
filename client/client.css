@@ -1,0 +1,13 @@
+.chambre-img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
