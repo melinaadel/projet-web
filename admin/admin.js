@@ -40,7 +40,7 @@ function valider(id) {
             chargerReservations(); // refresh
         },
         error: function () {
-            alert("❌ Erreur");
+            alert(" Erreur");
         }
     });
 }
