@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "nom": "test",
+        "email": "test@test.com",
+        "date_debut": "2026-04-15",
+        "date_fin": "2026-04-10",
+        "nb_personnes": 2,
+        "chambre": "Sensorielle",
+        "activites": [
+            {
+                "nom": "Yoga doux",
+                "date": "2026-04-16",
+                "creneau": "heure",
+                "participants": "toutes",
+                "message": "pref",
+                "statut": "en_attente"
+            },
+            {
+                "nom": "Observation des étoiles"
+            },
+            {
+                "nom": "Initiation au rêve lucide"
+            }
+        ],
+        "message": "test message ",
+        "prestations": [],
+        "statut": "en_attente"
+    }
+]

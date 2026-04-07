@@ -39,12 +39,15 @@
                 <button id="btn-reserver" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal">
                     Réserver maintenant
                 </button>
+                <button id="btn-login-toggle" class="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#loginModal" type="button">
+                    Se connecter
+                </button>
             </div>
 
             <!-- MODAL RESERVATION -->
             <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
+                    <div class="modal-content text-dark">
 
                         <div class="modal-header">
                             <h2 class="modal-title fs-5" id="reservationModalLabel">Demande de réservation</h2>
@@ -53,6 +56,8 @@
 
                         <div class="modal-body">
                             <form id="form-reservation">
+
+                                <div id="reservation-message" class="mt-3"></div>
 
                                 <div class="row g-3">
                                     <div class="col-md-6">
@@ -131,19 +136,56 @@
                                     </div>
                                 </div>
 
-                                <div id="reservation-message" class="mt-3"></div>
                             </form>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" form="form-reservation" class="btn btn-primary">Envoyer la demande</button>
+                            <button type="submit" form="form-reservation" class="btn btn-primary btn-reserver-chambre">Envoyer la demande</button>
                         </div>
 
                     </div>
                 </div>
             </div>
 
+            <!-- MODAL CONNEXION -->
+            <div class="modal fade" id="loginModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content text-dark">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Connexion client</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <form id="form-login">
+                                <div id="login-message" class="mb-3"></div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Mot de passe</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" form="form-login" class="btn btn-primary">
+                                Se connecter
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             <!-- IMAGE du lieu  -->
             <div class="col-md-6 text-center">
                 <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
@@ -296,6 +338,263 @@
     </div>
 </section>
 
+<!-- ESPACE CLIENT -->
+<section id="client-dashboard" class="py-5 bg-light d-none">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Espace Client</h2>
+            <p class="text-muted">Gérez votre séjour et vos activités</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- RESUME -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-body">
+
+                        <h5 class="fw-semibold mb-4">Votre séjour</h5>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Nom</span>
+                            <span id="client-nom" class="fw-medium">-</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Email</span>
+                            <span id="client-email" class="fw-medium">-</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Dates</span>
+                            <span id="client-dates" class="fw-medium">-</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Personnes</span>
+                            <span id="client-personnes" class="fw-medium">-</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Chambre</span>
+                            <span id="client-chambre" class="fw-medium text-primary">-</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- PRESTATIONS -->
+            <div class="col-12">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h5 class="fw-semibold mb-1">Prestations</h5>
+                                <p class="text-muted mb-0">Ajoutez des services complémentaires à votre séjour</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+
+                            <!-- Navette -->
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80"
+                                        class="card-img-top"
+                                        alt="Navette de l'hôtel"
+                                        style="height: 220px; object-fit: cover;"
+                                    >
+                                    <div class="card-body d-flex flex-column">
+                                        <h6 class="fw-bold mb-2">Navette</h6>
+                                        <p class="text-muted small mb-3">
+                                            Service de transport depuis la gare ou l’aéroport pour rejoindre l’hôtel en toute sérénité.
+                                        </p>
+                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Petit déjeuner -->
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80"
+                                        class="card-img-top"
+                                        alt="Petit déjeuner"
+                                        style="height: 220px; object-fit: cover;"
+                                    >
+                                    <div class="card-body d-flex flex-column">
+                                        <h6 class="fw-bold mb-2">Petit déjeuner</h6>
+                                        <p class="text-muted small mb-3">
+                                            Un réveil gourmand avec une sélection de boissons chaudes, fruits, viennoiseries et produits frais.
+                                        </p>
+                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dîner -->
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80"
+                                        class="card-img-top"
+                                        alt="Dîner"
+                                        style="height: 220px; object-fit: cover;"
+                                    >
+                                    <div class="card-body d-flex flex-column">
+                                        <h6 class="fw-bold mb-2">Dîner</h6>
+                                        <p class="text-muted small mb-3">
+                                            Un repas du soir raffiné dans une ambiance calme et immersive, inspirée par l’univers du rêve.
+                                        </p>
+                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Massage -->
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80"
+                                        class="card-img-top"
+                                        alt="Massage bien-être"
+                                        style="height: 220px; object-fit: cover;"
+                                    >
+                                    <div class="card-body d-flex flex-column">
+                                        <h6 class="fw-bold mb-2">Massage</h6>
+                                        <p class="text-muted small mb-3">
+                                            Une parenthèse de relaxation profonde pour relâcher les tensions et prolonger l’expérience sensorielle.
+                                        </p>
+                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVITE -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-body">
+
+                        <h5 class="fw-semibold mb-4">Demande d’activité</h5>
+
+                        <form id="form-activite">
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">Type d’activité</label>
+                                <select id="activite-select" name="activite_nom" class="form-select form-select-lg">
+                                    <option value="">Choisir une activité</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">Format de réservation</label>
+                                <select id="activite-creneau" name="creneau" class="form-select">
+                                    <option value="">Choisir un format</option>
+                                    <option value="heure">À l’heure</option>
+                                    <option value="demi-journee">Demi-journée</option>
+                                    <option value="journee">Journée</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">Date souhaitée</label>
+                                <input id="activite-date" type="date" name="date" class="form-control form-control-lg">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">Personnes concernées</label>
+                                <select id="activite-participants" name="participants" class="form-select">
+                                    <option value="">Choisir</option>
+                                    <option value="une">Une personne</option>
+                                    <option value="plusieurs">Plusieurs personnes</option>
+                                    <option value="toutes">Toutes les personnes de la réservation</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">Message</label>
+                                <textarea id="activite-message-input" name="message" class="form-control" rows="4" placeholder="Ex : je préfère ne pas faire cette activité dès le premier jour..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 rounded-pill">
+                                Envoyer la demande
+                            </button>
+
+                        </form>
+
+                        <div id="activite-message" class="mt-3"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- LISTE ACTIVITES -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-body">
+
+                        <h5 class="fw-semibold mb-4">Vos activités</h5>
+
+                        <ul id="liste-activites-client" class="list-group list-group-flush"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FACTURE -->
+            <div class="col-12">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body">
+
+                        <h5 class="fw-semibold mb-4">Facture</h5>
+
+                        <ul class="list-group list-group-flush mb-3">
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Nuits</span>
+                                <span>600€</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Chambre</span>
+                                <span>220€</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Prestations</span>
+                                <span>80€</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between text-danger">
+                                <span>Arrhes</span>
+                                <span>-100€</span>
+                            </li>
+
+                        </ul>
+
+                        <div class="text-end">
+                            <h4 class="fw-bold">
+                                Total :
+                                <span class="text-primary">800€</span>
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 <script src="./client.js"></script>
 
 <!-- Bootstrap Js -->

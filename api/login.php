@@ -1,77 +1,56 @@
 <?php
-// ============================================================
-// api/login.php
-// Vérifie les identifiants du client et retourne ses infos
-// Méthode : POST
-// Champs : login, password
-// Retourne : JSON avec les infos du client + sa réservation
-// ============================================================
+session_start();
+header('Content-Type: application/json');
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+$cheminFichier = __DIR__ . '/../data/clients.json';
 
-// --- 1. Lire les données ---
-$dataFile = "../data/data.json";
-$json     = file_get_contents($dataFile);
-$data     = json_decode($json, true);
-
-$login    = trim($_POST['login'] ?? '');
-$password = trim($_POST['password'] ?? '');
-
-if (!$login || !$password) {
-    echo json_encode(["succes" => false, "message" => "❌ Veuillez remplir tous les champs."]);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Méthode non autorisée'
+    ]);
     exit;
 }
 
-// --- 2. Chercher le client ---
-foreach ($data['clients'] as $client) {
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
 
-    if ($client['login'] === $login && $client['password'] === $password) {
+if (!file_exists($cheminFichier)) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Fichier clients introuvable'
+    ]);
+    exit;
+}
 
-        // --- 3. Trouver sa réservation ---
-        $reservation = null;
-        foreach ($data['reservations'] as $r) {
-            if ($r['id'] == $client['reservation_id']) {
-                $reservation = $r;
-                break;
-            }
-        }
+$contenu = file_get_contents($cheminFichier);
+$clients = json_decode($contenu, true);
 
-        if (!$reservation) {
-            echo json_encode(["succes" => false, "message" => "❌ Réservation introuvable."]);
-            exit;
-        }
+if (!is_array($clients)) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Erreur de lecture'
+    ]);
+    exit;
+}
 
-        // --- 4. Récupérer ses prestations commandées ---
-        $mesPrestations = [];
-        foreach ($data['prestations'] as $p) {
-            if ($p['reservation_id'] == $reservation['id']) {
-                $mesPrestations[] = $p;
-            }
-        }
+foreach ($clients as $client) {
+    if ($client['email'] === $email && $client['password'] === $password) {
+        $_SESSION['client'] = [
+            'id' => $client['id'],
+            'nom' => $client['nom'],
+            'email' => $client['email']
+        ];
 
-        // --- 5. Récupérer ses activités prévues ---
-        $mesActivites = [];
-        foreach ($data['activites_prevues'] as $a) {
-            if (in_array($reservation['id'], $a['reservation_ids'])) {
-                $mesActivites[] = $a;
-            }
-        }
-
-        // --- 6. Retourner toutes les infos en JSON ---
         echo json_encode([
-            "succes"       => true,
-            "nom"          => $reservation['nom'],
-            "email"        => $login,
-            "reservation"  => $reservation,
-            "prestations"  => $mesPrestations,
-            "activites"    => $mesActivites,
-            "prestations_disponibles" => $data['prestations_disponibles']
+            'success' => true,
+            'message' => 'Connexion réussie'
         ]);
         exit;
     }
 }
 
-// --- 7. Identifiants incorrects ---
-echo json_encode(["succes" => false, "message" => "❌ Email ou mot de passe incorrect."]);
-?>
+echo json_encode([
+    'success' => false,
+    'message' => 'Email ou mot de passe incorrect'
+]);
