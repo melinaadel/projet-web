@@ -31,72 +31,28 @@
          1. DEMANDES DE RÉSERVATION
     ══════════════════════════════════════════ -->
     <div class="card bg-secondary-subtle text-dark mb-5">
-        <div class="card-header bg-dark text-warning">
-            <h4 class="mb-0"><i class="bi bi-calendar-check me-2"></i>Demandes de réservation</h4>
-        </div>
-        <div class="card-body p-0">
-            <table class="table table-hover mb-0 align-middle">
-                <thead class="table-dark">
-                    <tr>
-                        <th>#</th>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Arrivée</th>
-                        <th>Départ</th>
-                        <th>Personnes</th>
-                        <th>Activités souhaitées</th>
-                        <th>Chambres libres</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><strong>Dupont</strong></td>
-                        <td>dupont@email.com</td>
-                        <td>01/05/2026</td>
-                        <td>05/05/2026</td>
-                        <td>2</td>
-                        <td>Tennis, Méditation</td>
-                        <td>
-                            <span class="badge bg-success">Nuit Étoilée: 3</span>
-                            <span class="badge bg-warning text-dark">Suite Lucide: 1</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-success btn-sm me-1"
-                                onclick="validerReservation(1, 'Dupont', 'dupont@email.com', '01/05/2026', '05/05/2026')">
-                                <i class="bi bi-check-lg me-1"></i>Valider
-                            </button>
-                            <button class="btn btn-danger btn-sm">
-                                <i class="bi bi-x-lg me-1"></i>Refuser
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><strong>Martin</strong></td>
-                        <td>martin@email.com</td>
-                        <td>10/05/2026</td>
-                        <td>15/05/2026</td>
-                        <td>4</td>
-                        <td>Sortie bateau</td>
-                        <td>
-                            <span class="badge bg-success">Sensorielle: 2</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-success btn-sm me-1"
-                                onclick="validerReservation(2, 'Martin', 'martin@email.com', '10/05/2026', '15/05/2026')">
-                                <i class="bi bi-check-lg me-1"></i>Valider
-                            </button>
-                            <button class="btn btn-danger btn-sm">
-                                <i class="bi bi-x-lg me-1"></i>Refuser
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="card-header bg-dark text-warning">
+        <h4 class="mb-0"><i class="bi bi-calendar-check me-2"></i>Demandes de réservation</h4>
     </div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0 align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Arrivée</th>
+                    <th>Départ</th>
+                    <th>Personnes</th>
+                    <th>Activités</th>
+                    <th>Chambre</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="reservationsBody"></tbody>
+        </table>
+    </div>
+</div>
 
     <!-- ══════════════════════════════════════════
          2. GESTION DES CHAMBRES
@@ -113,8 +69,8 @@
                         <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Nuit Étoilée</h5>
-                            <p class="mb-1"><span class="badge bg-success">Libres: 3</span></p>
-                            <p class="mb-0"><span class="badge bg-danger">Réservées: 2</span></p>
+                            <p class="mb-1"><span id="libres-Nuit Étoilée" class="badge bg-success">Libres: 0</span></p>
+                            <p class="mb-0"><span id="reservees-Nuit Étoilée" class="badge bg-danger">Réservées: 0</span></p>
                         </div>
                     </div>
                 </div>
@@ -124,8 +80,8 @@
                         <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Sensorielle</h5>
-                            <p class="mb-1"><span class="badge bg-success">Libres: 2</span></p>
-                            <p class="mb-0"><span class="badge bg-danger">Réservées: 3</span></p>
+                            <p class="mb-1"><span id="libres-Sensorielle" class="badge bg-success">Libres: 0</span></p>
+                            <p class="mb-0"><span id="reservees-Sensorielle" class="badge bg-danger">Réservées: 0</span></p>
                         </div>
                     </div>
                 </div>
@@ -135,8 +91,8 @@
                         <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=400" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Silence Absolu</h5>
-                            <p class="mb-1"><span class="badge bg-warning text-dark">Libres: 1</span></p>
-                            <p class="mb-0"><span class="badge bg-danger">Réservées: 4</span></p>
+                            <p class="mb-1"><span id="libres-Silence Absolu" class="badge bg-success">Libres: 0</span></p>
+                            <p class="mb-0"><span id="reservees-Silence Absolu" class="badge bg-danger">Réservées 0</span></p>
                         </div>
                     </div>
                 </div>
@@ -146,8 +102,8 @@
                         <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Suite Lucide</h5>
-                            <p class="mb-1"><span class="badge bg-success">Libres: 2</span></p>
-                            <p class="mb-0"><span class="badge bg-danger">Réservées: 1</span></p>
+                            <p class="mb-1"><span id="libres-Suite Lucide" class="badge bg-success">Libres: 0</span></p>
+                            <p class="mb-0"><span id="reservees-Suite Lucide" class="badge bg-danger">Réservées: 0</span></p>
                         </div>
                     </div>
                 </div>
@@ -169,9 +125,7 @@
             <div class="mb-3">
                 <label class="form-label fw-bold">Client</label>
                 <select class="form-select" id="clientFacture" onchange="afficherFacture()">
-                    <option value="">-- Sélectionner un client --</option>
-                    <option value="dupont">Dupont — 01/05 au 05/05 (4 nuits)</option>
-                    <option value="martin">Martin — 10/05 au 15/05 (5 nuits)</option>
+                <select id="clientFacture" onchange="afficherFacture()">
                 </select>
             </div>
 
@@ -264,18 +218,10 @@
 
             <table class="table table-hover align-middle">
                 <thead class="table-dark">
-                    <tr>
-                        <th><input type="checkbox" id="checkAll" onchange="toggleAll()"></th>
-                        <th>Client</th>
-                        <th>Activité</th>
-                        <th>Créneau</th>
-                        <th>Personnes</th>
-                        <th>Note client</th>
-                        <th>Statut</th>
-                    </tr>
+                    
                 </thead>
                 <tbody id="activitesBody">
-                    <tr>
+                <tr>
                         <td><input type="checkbox" class="checkActivite"></td>
                         <td>Dupont</td>
                         <td><i class="bi bi-trophy me-1"></i>Tennis</td>
@@ -303,6 +249,7 @@
                         <td><span class="badge bg-success">Validée</span></td>
                     </tr>
                 </tbody>
+
             </table>
 
             <!-- Validation avec animateur -->
@@ -454,58 +401,79 @@ const facturesData = {
 
 // ─── Afficher la facture ───────────────────────────────────────────────────────
 function afficherFacture() {
-    const client = $("#clientFacture").val();
-    if (!client) { $("#factureDetail").addClass("d-none"); return; }
+    const clientId = $("#clientFacture").val();
+    if (!clientId) {
+        $("#factureDetail").addClass("d-none");
+        return;
+    }
 
-    const data = facturesData[client];
-    let html = "";
-    let totalLignes = 0;
+    fetch('/projet-web/api/getReservations.php')
+    .then(res => res.json())
+    .then(data => {
 
-    data.lignes.forEach(l => {
-        html += `<tr><td>${l.label}</td><td class="text-end">${l.montant} €</td></tr>`;
-        totalLignes += l.montant;
+        let reservations = data.success ? data.reservations : data;
+
+        const client = reservations.find(r => r.id == clientId);
+
+        if (!client) return;
+
+        let html = "";
+        let total = 0;
+        let totalPrestations = 0;
+
+        // 🛏️ CHAMBRE (exemple simple)
+        const nbNuits = calculerNuits(client.date_debut, client.date_fin);
+        const prixNuit = 120; // tu peux changer
+
+        const prixChambre = nbNuits * prixNuit;
+
+        html += `<tr>
+            <td>Chambre ${client.chambre} × ${nbNuits} nuits</td>
+            <td class="text-end">${prixChambre} €</td>
+        </tr>`;
+
+        total += prixChambre;
+
+        // 🍽️ (pour l’instant vide → plus tard backend)
+        // 👉 on garde structure pour après
+
+        // 💰 ARRHES
+        let arrhes = client.arrhes || 0;
+
+        if (arrhes > 0) {
+            $("#ligneArrhes").removeClass("d-none");
+            $("#montantArrhes").text(`— ${arrhes} €`);
+        } else {
+            $("#ligneArrhes").addClass("d-none");
+        }
+
+        // 🏷️ RÉDUCTION
+        let reduction = client.reduction || 0;
+        let montantReduction = 0;
+
+        if (reduction > 0) {
+            montantReduction = Math.round(totalPrestations * reduction / 100);
+
+            $("#ligneReduction").removeClass("d-none");
+            $("#montantReduction").text(`— ${montantReduction} €`);
+        } else {
+            $("#ligneReduction").addClass("d-none");
+        }
+
+        const totalFinal = total - arrhes - montantReduction;
+
+        $("#factureBody").html(html);
+        $("#factureTotal").text(`${totalFinal} €`);
+        $("#factureDetail").removeClass("d-none");
     });
-
-    $("#factureBody").html(html);
-    $("#factureDetail").removeClass("d-none");
-
-    // Arrhes — ligne en négatif si reçues
-    if (data.arrhes > 0) {
-        $("#ligneArrhes").removeClass("d-none");
-        $("#montantArrhes").text(`— ${data.arrhes} €`);
-        $("#arrheStatut").html(`<span class="badge bg-success">Reçues : ${data.arrhes} €</span>`);
-    } else {
-        $("#ligneArrhes").addClass("d-none");
-        $("#arrheStatut").html(`<span class="badge bg-danger">Non reçues</span>`);
-    }
-
-    // Réduction — s'applique uniquement aux prestations (tout sauf la chambre)
-    let montantReduction = 0;
-    if (data.reduction > 0) {
-        const totalPrestations = data.lignes.slice(1).reduce((s, l) => s + l.montant, 0);
-        montantReduction = Math.round(totalPrestations * data.reduction / 100);
-        $("#ligneReduction").removeClass("d-none");
-        $("#montantReduction").text(`— ${montantReduction} € (${data.reduction}%)`);
-    } else {
-        $("#ligneReduction").addClass("d-none");
-    }
-
-    const total = totalLignes - data.arrhes - montantReduction;
-    $("#factureTotal").text(`${total} €`);
 }
+function calculerNuits(debut, fin) {
+    const d1 = new Date(debut);
+    const d2 = new Date(fin);
 
-// ─── Appliquer les arrhes ──────────────────────────────────────────────────────
-function appliquerArrhes() {
-    const client = $("#clientFacture").val();
-    if (!client) { alert("Veuillez sélectionner un client."); return; }
-    const montant = parseFloat($("#montantArrheInput").val());
-    if (isNaN(montant) || montant <= 0) { alert("Entrez un montant valide."); return; }
-
-    facturesData[client].arrhes = montant;
-    afficherFacture();
-    $("#montantArrheInput").val("");
+    const diff = d2 - d1;
+    return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
-
 // ─── Appliquer une réduction ───────────────────────────────────────────────────
 function appliquerReduction() {
     const client = $("#clientFacture").val();
@@ -583,6 +551,222 @@ function validerActivites() {
 function filtrerActivites() {
     // À brancher avec le backend PHP
     console.log("Date sélectionnée :", $("#dateActivites").val());
+}
+
+const URL_GET_RESERVATIONS = '/projet/api/getReservations.php';
+const URL_VALIDER_RESERVATION = '/projet/api/validerReservation.php';
+const URL_REFUSER_RESERVATION = '/projet/api/refuserReservation.php';
+
+/*
+    IMPORTANT :
+    remplace /projet/ par le vrai nom de ton dossier
+    exemple : /hotel-reves/
+*/
+const stockChambres = {
+    "Nuit Étoilée": 10,
+    "Sensorielle": 10,
+    "Silence Absolu": 15,
+    "Suite Lucide": 15
+};
+
+function escapeHtml(texte) {
+    return String(texte ?? '')
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function formaterDate(dateTexte) {
+    if (!dateTexte) return "—";
+
+    const morceaux = dateTexte.split("-");
+    if (morceaux.length !== 3) return dateTexte;
+
+    return `${morceaux[2]}/${morceaux[1]}/${morceaux[0]}`;
+}
+
+function calculerChambresLibres(typeChambre, toutesLesReservations) {
+    const stockInitial = 10;
+    let occupees = 0;
+
+    const aujourdHui = new Date();
+
+    toutesLesReservations.forEach(r => {
+        if (r.statut !== "validee") return;
+        if (r.chambre !== typeChambre) return;
+
+        const debut = new Date(r.date_debut);
+        const fin = new Date(r.date_fin);
+
+        // Si aujourd’hui est dans la période → chambre occupée
+        if (aujourdHui >= debut && aujourdHui <= fin) {
+            occupees++;
+        }
+    });
+
+    return stockInitial - occupees;
+}
+
+function badgeStatut(statut) {
+    if (statut === "validee") {
+        return `<span class="badge bg-success">Validée</span>`;
+    }
+
+    if (statut === "refusee") {
+        return `<span class="badge bg-danger">Refusée</span>`;
+    }
+
+    return `<span class="badge bg-warning text-dark">En attente</span>`;
+}
+
+function chargerReservations() {
+    fetch('/projet-web/api/getReservations.php')
+        .then(response => response.json())
+        .then(data => {
+
+            let reservations = data.success ? data.reservations : data;
+            const stock = calculerStockChambres(reservations);
+
+                   
+            for (let type in stock) {
+                const libresEl = document.getElementById(`libres-${type}`);
+                const reserveesEl = document.getElementById(`reservees-${type}`);
+
+                if (libresEl) {
+                    libresEl.textContent = `Libres: ${stock[type].libres}`;
+                }
+
+                if (reserveesEl) {
+                    reserveesEl.textContent = `Réservées: ${stock[type].reservees}`;
+                }
+            }
+            if (!Array.isArray(reservations) || reservations.length === 0) {
+                document.getElementById("reservationsBody").innerHTML =
+                    "<tr><td colspan='9'>Aucune réservation</td></tr>";
+                return;
+            }
+
+            let html = "";
+
+            reservations.forEach(r => {
+                if (r.statut !== "en_attente") return;
+                let activites = "Aucune";
+
+                if (Array.isArray(r.activites) && r.activites.length > 0) {
+                    activites = r.activites.map(a => a.nom).join(", ");
+                }
+
+                html += `
+                <tr>
+                    <td>${r.id}</td>
+                    <td>${r.nom}</td>
+                    <td>${r.email}</td>
+                    <td>${r.date_debut}</td>
+                    <td>${r.date_fin}</td>
+                    <td>${r.nb_personnes}</td>
+                     <td>${activites}</td>
+                    <td>${r.chambre ?? "Non définie"}</td>
+                    <td>${activites}</td>
+                    <td>—</td>
+                    <td>
+                        <button onclick="validerReservationAPI(${r.id})" class="btn btn-success btn-sm">Valider</button>
+                        <button onclick="refuserReservationAPI(${r.id})" class="btn btn-danger btn-sm">Refuser</button>
+                    </td>
+                </tr>
+                `;
+            });
+
+            document.getElementById("reservationsBody").innerHTML = html;
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById("reservationsBody").innerHTML =
+                "<tr><td colspan='9'>Erreur serveur</td></tr>";
+        });
+}
+
+
+function validerReservationAPI(id, nom, email, arrivee, depart) {
+    fetch('/projet-web/api/validerReservation.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'id=' + id
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            chargerReservations(); // refresh
+            chargerClientsFacture();
+            validerReservation(id, nom, email, arrivee, depart); // popup mail
+        }
+    });
+}
+
+function refuserReservationAPI(id) {
+    if (!confirm("Refuser cette réservation ?")) return;
+
+    fetch('/projet-web/api/refuserReservation.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'id=' + id
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            chargerReservations(); // refresh
+        }
+    });
+}
+
+window.onload = function () {
+    chargerReservations();
+    chargerClientsFacture(); // ✅ IMPORTANT
+};
+function calculerStockChambres(reservations) {
+    let resultat = {};
+
+    // Initialiser
+    for (let type in stockChambres) {
+        resultat[type] = {
+            libres: stockChambres[type],
+            reservees: 0
+        };
+    }
+
+    // Compter les réservations validées
+    reservations.forEach(r => {
+        if (r.statut === "validee" && resultat[r.chambre]) {
+            resultat[r.chambre].reservees++;
+            resultat[r.chambre].libres--;
+        }
+    });
+
+    return resultat;
+}
+function chargerClientsFacture() {
+    fetch('/projet-web/api/getReservations.php')
+    .then(res => res.json())
+    .then(data => {
+
+        let reservations = data.success ? data.reservations : data;
+
+        let html = '<option value="">-- Sélectionner un client --</option>';
+
+        reservations.forEach(r => {
+
+            if (r.statut !== "validee") return; // ✅ clients uniquement
+
+            html += `
+                <option value="${r.id}">
+                    ${r.nom} — ${r.date_debut} au ${r.date_fin}
+                </option>
+            `;
+        });
+
+        document.getElementById("clientFacture").innerHTML = html;
+    });
 }
 </script>
 
