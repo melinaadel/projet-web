@@ -10,8 +10,10 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    <!-- Cliens pour le style  -->
+    <!-- CSS -->
     <link rel="stylesheet" href="client.css">
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,14 +21,10 @@
 <!-- PRESENTATION -->
 <section id="presentation" class="bg-dark text-white py-5">
     <div class="container">
-
         <div class="row align-items-center">
 
-            <!-- TEXTE -->
             <div class="col-md-6">
-                <h1 class="display-4 fw-bold mb-4">
-                    Hôtel des Rêves Lucides
-                </h1>
+                <h1 class="display-4 fw-bold mb-4">Hôtel des Rêves Lucides</h1>
 
                 <p class="lead">
                     Plongez dans un univers entre réalité et imagination, où le sommeil devient une expérience immersive.
@@ -39,6 +37,7 @@
                 <button id="btn-reserver" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal">
                     Réserver maintenant
                 </button>
+
                 <button id="btn-login-toggle" class="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#loginModal" type="button">
                     Se connecter
                 </button>
@@ -57,7 +56,7 @@
                         <div class="modal-body">
                             <form id="form-reservation">
 
-                                <div id="reservation-message" class="mt-3"></div>
+                                <div id="reservation-message" class="mb-3"></div>
 
                                 <div class="row g-3">
                                     <div class="col-md-6">
@@ -89,10 +88,10 @@
                                         <label for="chambre" class="form-label">Chambre souhaitée</label>
                                         <select class="form-select" id="chambre" name="chambre" required>
                                             <option value="">Choisir une chambre</option>
-                                            <option value="Nuit Étoilée">Nuit Étoilée</option>
-                                            <option value="Sensorielle">Sensorielle</option>
-                                            <option value="Silence Absolu">Silence Absolu</option>
-                                            <option value="Suite Lucide">Suite Lucide</option>
+                                            <option value="Nuit Étoilée">Nuit Étoilée - 120€ / nuit</option>
+                                            <option value="Sensorielle">Sensorielle - 140€ / nuit</option>
+                                            <option value="Silence Absolu">Silence Absolu - 160€ / nuit</option>
+                                            <option value="Suite Lucide">Suite Lucide - 220€ / nuit</option>
                                         </select>
                                     </div>
 
@@ -100,39 +99,48 @@
                                         <label class="form-label d-block">Activités souhaitées</label>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="Méditation guidée" id="activite1" name="activites[]">
-                                            <label class="form-check-label" for="activite1">Méditation guidée</label>
+                                            <input class="form-check-input activite-reservation" type="checkbox" value="Méditation guidée" id="activite1" name="activites[]">
+                                            <label class="form-check-label" for="activite1">Méditation guidée - 20€</label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="Yoga doux" id="activite2" name="activites[]">
-                                            <label class="form-check-label" for="activite2">Yoga doux</label>
+                                            <input class="form-check-input activite-reservation" type="checkbox" value="Yoga doux" id="activite2" name="activites[]">
+                                            <label class="form-check-label" for="activite2">Yoga doux - 25€</label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="Observation des étoiles" id="activite3" name="activites[]">
-                                            <label class="form-check-label" for="activite3">Observation des étoiles</label>
+                                            <input class="form-check-input activite-reservation" type="checkbox" value="Observation des étoiles" id="activite3" name="activites[]">
+                                            <label class="form-check-label" for="activite3">Observation des étoiles - 30€</label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="Initiation au rêve lucide" id="activite4" name="activites[]">
-                                            <label class="form-check-label" for="activite4">Initiation au rêve lucide</label>
+                                            <input class="form-check-input activite-reservation" type="checkbox" value="Initiation au rêve lucide" id="activite4" name="activites[]">
+                                            <label class="form-check-label" for="activite4">Initiation au rêve lucide - 35€</label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="Sortie en bateau" id="activite5" name="activites[]">
-                                            <label class="form-check-label" for="activite5">Sortie en bateau</label>
+                                            <input class="form-check-input activite-reservation" type="checkbox" value="Sortie en bateau" id="activite5" name="activites[]">
+                                            <label class="form-check-label" for="activite5">Sortie en bateau - 50€</label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="Match de tennis" id="activite6" name="activites[]">
-                                            <label class="form-check-label" for="activite6">Match de tennis</label>
+                                            <input class="form-check-input activite-reservation" type="checkbox" value="Match de tennis" id="activite6" name="activites[]">
+                                            <label class="form-check-label" for="activite6">Match de tennis - 40€</label>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <label for="message" class="form-label">Message complémentaire</label>
                                         <textarea class="form-control" id="message" name="message" rows="4" placeholder="Précisez vos souhaits, contraintes ou préférences..."></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="alert alert-light border mb-0">
+                                            <div class="d-flex justify-content-between">
+                                                <span>Total prévisionnel</span>
+                                                <strong id="reservation-total">0€</strong>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -141,7 +149,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" form="form-reservation" class="btn btn-primary btn-reserver-chambre">Envoyer la demande</button>
+                            <button type="submit" form="form-reservation" class="btn btn-primary">Envoyer la demande</button>
                         </div>
 
                     </div>
@@ -159,9 +167,9 @@
                         </div>
 
                         <div class="modal-body">
-
                             <form id="form-login">
                                 <div id="login-message" class="mb-3"></div>
+
                                 <div class="mb-3">
                                     <label class="form-label">Email</label>
                                     <input type="email" class="form-control" name="email" required>
@@ -171,26 +179,25 @@
                                     <label class="form-label">Mot de passe</label>
                                     <input type="password" class="form-control" name="password" required>
                                 </div>
-
                             </form>
-
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" form="form-login" class="btn btn-primary">
-                                Se connecter
-                            </button>
+                            <button type="submit" form="form-login" class="btn btn-primary">Se connecter</button>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <!-- IMAGE du lieu  -->
+
+            <!-- IMAGE -->
             <div class="col-md-6 text-center">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-                     class="img-fluid rounded shadow"
-                     alt="Nature et ciel étoilé">
+                <img
+                    src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+                    class="img-fluid rounded shadow"
+                    alt="Nature et ciel étoilé"
+                >
             </div>
         </div>
     </div>
@@ -202,17 +209,13 @@
 
         <div class="text-center mb-5">
             <h2 class="fw-bold">Nos Chambres Immersives</h2>
-            <p class="text-muted">
-                Des univers uniques pour vivre une expérience entre rêve et réalité.
-            </p>
+            <p class="text-muted">Des univers uniques pour vivre une expérience entre rêve et réalité.</p>
         </div>
 
         <div class="row g-4">
 
-            <!-- Chambre Nuit Étoilée -->
             <div class="col-md-6 col-xl-3">
                 <div class="card h-100 shadow-sm border-0">
-
                     <div id="carouselEtoilee" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner rounded-top">
                             <div class="carousel-item active">
@@ -229,21 +232,16 @@
                             <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
-
                     <div class="card-body">
                         <h5 class="card-title">Nuit Étoilée</h5>
                         <p class="fw-bold text-primary">120€ / nuit</p>
-                        <p class="card-text text-muted">
-                            Dormez sous un ciel étoilé projeté sur les murs et le plafond pour une immersion totale.
-                        </p>
+                        <p class="card-text text-muted">Dormez sous un ciel étoilé projeté sur les murs et le plafond pour une immersion totale.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Chambre Sensorielle -->
             <div class="col-md-6 col-xl-3">
                 <div class="card h-100 shadow-sm border-0">
-
                     <div id="carouselSensorielle" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner rounded-top">
                             <div class="carousel-item active">
@@ -260,21 +258,16 @@
                             <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
-
                     <div class="card-body">
                         <h5 class="card-title">Sensorielle</h5>
                         <p class="fw-bold text-primary">140€ / nuit</p>
-                        <p class="card-text text-muted">
-                            Lumières douces et ambiance sonore relaxante pour accompagner votre endormissement.
-                        </p>
+                        <p class="card-text text-muted">Lumières douces et ambiance sonore relaxante pour accompagner votre endormissement.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Chambre Silence Absolu -->
             <div class="col-md-6 col-xl-3">
                 <div class="card h-100 shadow-sm border-0">
-
                     <div id="carouselSilence" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner rounded-top">
                             <div class="carousel-item active">
@@ -291,21 +284,16 @@
                             <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
-
                     <div class="card-body">
                         <h5 class="card-title">Silence Absolu</h5>
                         <p class="fw-bold text-primary">160€ / nuit</p>
-                        <p class="card-text text-muted">
-                            Une chambre isolée pour une déconnexion totale et un repos profond.
-                        </p>
+                        <p class="card-text text-muted">Une chambre isolée pour une déconnexion totale et un repos profond.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Suite Lucide -->
             <div class="col-md-6 col-xl-3">
                 <div class="card h-100 shadow-sm border-0">
-
                     <div id="carouselSuite" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner rounded-top">
                             <div class="carousel-item active">
@@ -322,25 +310,163 @@
                             <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
-
                     <div class="card-body">
                         <h5 class="card-title">Suite Lucide</h5>
                         <p class="fw-bold text-primary">220€ / nuit</p>
+                        <p class="card-text text-muted">Une suite haut de gamme avec contrôle personnalisé de l’ambiance pour une expérience unique.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ACTIVITES PUBLIQUES -->
+<section class="py-5 bg-white" id="activites-section">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-6">Nos Activités Oniriques</h2>
+            <p class="text-muted mb-0">
+                Des expériences uniques pour prolonger votre voyage entre rêve, détente et imagination.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Méditation guidée -->
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Méditation guidée"
+                        style="height: 240px; object-fit: cover;"
+                    >
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Méditation guidée</h5>
+                            <span class="badge text-bg-primary fs-6">20€</span>
+                        </div>
                         <p class="card-text text-muted">
-                            Une suite haut de gamme avec contrôle personnalisé de l’ambiance pour une expérience unique.
+                            Une séance apaisante pour ralentir le rythme, se recentrer et préparer le corps et l’esprit à une immersion profonde.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yoga doux -->
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Yoga doux"
+                        style="height: 240px; object-fit: cover;"
+                    >
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Yoga doux</h5>
+                            <span class="badge text-bg-primary fs-6">25€</span>
+                        </div>
+                        <p class="card-text text-muted">
+                            Des mouvements lents et harmonieux pour détendre le corps, améliorer la respiration et installer une sensation de calme durable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Observation des étoiles -->
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Observation des étoiles"
+                        style="height: 240px; object-fit: cover;"
+                    >
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Observation des étoiles</h5>
+                            <span class="badge text-bg-primary fs-6">30€</span>
+                        </div>
+                        <p class="card-text text-muted">
+                            Profitez d’un ciel nocturne pur et sans pollution lumineuse pour contempler les étoiles dans une atmosphère magique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Initiation au rêve lucide -->
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Initiation au rêve lucide"
+                        style="height: 240px; object-fit: cover;"
+                    >
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Initiation au rêve lucide</h5>
+                            <span class="badge text-bg-primary fs-6">35€</span>
+                        </div>
+                        <p class="card-text text-muted">
+                            Découvrez les bases du rêve lucide grâce à des techniques simples pour apprendre à reconnaître et guider vos rêves.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sortie en bateau -->
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Sortie en bateau"
+                        style="height: 240px; object-fit: cover;"
+                    >
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Sortie en bateau</h5>
+                            <span class="badge text-bg-primary fs-6">50€</span>
+                        </div>
+                        <p class="card-text text-muted">
+                            Une escapade paisible sur l’eau pour profiter du paysage, du silence et d’un moment suspendu hors du temps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Match de tennis -->
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Match de tennis"
+                        style="height: 240px; object-fit: cover;"
+                    >
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Match de tennis</h5>
+                            <span class="badge text-bg-primary fs-6">40€</span>
+                        </div>
+                        <p class="card-text text-muted">
+                            Une activité sportive encadrée pour partager un moment dynamique, convivial et ressourçant au cœur du séjour.
                         </p>
                     </div>
                 </div>
             </div>
 
         </div>
-
     </div>
 </section>
 
 <!-- ESPACE CLIENT -->
 <section id="client-dashboard" class="py-5 bg-light d-none">
-
     <div class="container">
 
         <div class="text-center mb-5">
@@ -354,7 +480,6 @@
             <div class="col-lg-6">
                 <div class="card border-0 shadow-sm rounded-4 h-100">
                     <div class="card-body">
-
                         <h5 class="fw-semibold mb-4">Votre séjour</h5>
 
                         <div class="d-flex justify-content-between mb-2">
@@ -381,10 +506,10 @@
                             <span class="text-muted">Chambre</span>
                             <span id="client-chambre" class="fw-medium text-primary">-</span>
                         </div>
-
                     </div>
                 </div>
             </div>
+
             <!-- PRESTATIONS -->
             <div class="col-12">
                 <div class="card border-0 shadow-sm rounded-4">
@@ -398,78 +523,46 @@
 
                         <div class="row g-4">
 
-                            <!-- Navette -->
                             <div class="col-md-6 col-xl-3">
                                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80"
-                                        class="card-img-top"
-                                        alt="Navette de l'hôtel"
-                                        style="height: 220px; object-fit: cover;"
-                                    >
+                                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Navette" style="height: 220px; object-fit: cover;">
                                     <div class="card-body d-flex flex-column">
-                                        <h6 class="fw-bold mb-2">Navette</h6>
-                                        <p class="text-muted small mb-3">
-                                            Service de transport depuis la gare ou l’aéroport pour rejoindre l’hôtel en toute sérénité.
-                                        </p>
-                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                        <h6 class="fw-bold mb-2">Navette - 25€</h6>
+                                        <p class="text-muted small mb-3">Service de transport depuis la gare ou l’aéroport pour rejoindre l’hôtel en toute sérénité.</p>
+                                        <button class="btn btn-outline-primary mt-auto btn-prestation" data-prestation="Navette">Ajouter</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Petit déjeuner -->
                             <div class="col-md-6 col-xl-3">
                                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80"
-                                        class="card-img-top"
-                                        alt="Petit déjeuner"
-                                        style="height: 220px; object-fit: cover;"
-                                    >
+                                    <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Petit déjeuner" style="height: 220px; object-fit: cover;">
                                     <div class="card-body d-flex flex-column">
-                                        <h6 class="fw-bold mb-2">Petit déjeuner</h6>
-                                        <p class="text-muted small mb-3">
-                                            Un réveil gourmand avec une sélection de boissons chaudes, fruits, viennoiseries et produits frais.
-                                        </p>
-                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                        <h6 class="fw-bold mb-2">Petit déjeuner - 15€</h6>
+                                        <p class="text-muted small mb-3">Un réveil gourmand avec une sélection de boissons chaudes, fruits, viennoiseries et produits frais.</p>
+                                        <button class="btn btn-outline-primary mt-auto btn-prestation" data-prestation="Petit déjeuner">Ajouter</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Dîner -->
                             <div class="col-md-6 col-xl-3">
                                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80"
-                                        class="card-img-top"
-                                        alt="Dîner"
-                                        style="height: 220px; object-fit: cover;"
-                                    >
+                                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Dîner" style="height: 220px; object-fit: cover;">
                                     <div class="card-body d-flex flex-column">
-                                        <h6 class="fw-bold mb-2">Dîner</h6>
-                                        <p class="text-muted small mb-3">
-                                            Un repas du soir raffiné dans une ambiance calme et immersive, inspirée par l’univers du rêve.
-                                        </p>
-                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                        <h6 class="fw-bold mb-2">Dîner - 30€</h6>
+                                        <p class="text-muted small mb-3">Un repas du soir raffiné dans une ambiance calme et immersive, inspirée par l’univers du rêve.</p>
+                                        <button class="btn btn-outline-primary mt-auto btn-prestation" data-prestation="Dîner">Ajouter</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Massage -->
                             <div class="col-md-6 col-xl-3">
                                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80"
-                                        class="card-img-top"
-                                        alt="Massage bien-être"
-                                        style="height: 220px; object-fit: cover;"
-                                    >
+                                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Massage" style="height: 220px; object-fit: cover;">
                                     <div class="card-body d-flex flex-column">
-                                        <h6 class="fw-bold mb-2">Massage</h6>
-                                        <p class="text-muted small mb-3">
-                                            Une parenthèse de relaxation profonde pour relâcher les tensions et prolonger l’expérience sensorielle.
-                                        </p>
-                                        <button class="btn btn-outline-primary mt-auto">Ajouter</button>
+                                        <h6 class="fw-bold mb-2">Massage - 60€</h6>
+                                        <p class="text-muted small mb-3">Une parenthèse de relaxation profonde pour relâcher les tensions et prolonger l’expérience sensorielle.</p>
+                                        <button class="btn btn-outline-primary mt-auto btn-prestation" data-prestation="Massage">Ajouter</button>
                                     </div>
                                 </div>
                             </div>
@@ -511,13 +604,15 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label text-muted small">Personnes concernées</label>
-                                <select id="activite-participants" name="participants" class="form-select">
-                                    <option value="">Choisir</option>
-                                    <option value="une">Une personne</option>
-                                    <option value="plusieurs">Plusieurs personnes</option>
-                                    <option value="toutes">Toutes les personnes de la réservation</option>
-                                </select>
+                                <label class="form-label text-muted small">Nombre de personnes concernées</label>
+                                <input
+                                    id="activite-participants"
+                                    type="number"
+                                    name="participants"
+                                    class="form-control"
+                                    min="1"
+                                    placeholder="Ex : 2"
+                                >
                             </div>
 
                             <div class="mb-3">
@@ -528,7 +623,6 @@
                             <button type="submit" class="btn btn-primary w-100 rounded-pill">
                                 Envoyer la demande
                             </button>
-
                         </form>
 
                         <div id="activite-message" class="mt-3"></div>
@@ -541,64 +635,37 @@
             <div class="col-lg-6">
                 <div class="card border-0 shadow-sm rounded-4 h-100">
                     <div class="card-body">
-
                         <h5 class="fw-semibold mb-4">Vos activités</h5>
-
                         <ul id="liste-activites-client" class="list-group list-group-flush"></ul>
                     </div>
                 </div>
             </div>
-            
+
             <!-- FACTURE -->
             <div class="col-12">
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body">
-
                         <h5 class="fw-semibold mb-4">Facture</h5>
-
-                        <ul class="list-group list-group-flush mb-3">
-
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Nuits</span>
-                                <span>600€</span>
-                            </li>
-
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Chambre</span>
-                                <span>220€</span>
-                            </li>
-
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Prestations</span>
-                                <span>80€</span>
-                            </li>
-
-                            <li class="list-group-item d-flex justify-content-between text-danger">
-                                <span>Arrhes</span>
-                                <span>-100€</span>
-                            </li>
-
-                        </ul>
-
+                        <ul id="facture-liste" class="list-group list-group-flush mb-3"></ul>
                         <div class="text-end">
                             <h4 class="fw-bold">
                                 Total :
-                                <span class="text-primary">800€</span>
+                                <span id="facture-total" class="text-primary">0€</span>
                             </h4>
                         </div>
-
                     </div>
                 </div>
             </div>
 
         </div>
-
     </div>
 </section>
-<script src="./client.js"></script>
 
 <!-- Bootstrap Js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JS -->
+<script src="./client.js"></script>
 
 </body>
 </html>

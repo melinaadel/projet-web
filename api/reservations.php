@@ -11,6 +11,22 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+$prixChambres = [
+    "Nuit Étoilée" => 120,
+    "Sensorielle" => 140,
+    "Silence Absolu" => 160,
+    "Suite Lucide" => 220
+];
+
+$prixActivites = [
+    "Méditation guidée" => 20,
+    "Yoga doux" => 25,
+    "Observation des étoiles" => 30,
+    "Initiation au rêve lucide" => 35,
+    "Sortie en bateau" => 50,
+    "Match de tennis" => 40
+];
+
 $nom = $_POST['nom'] ?? '';
 $email = $_POST['email'] ?? '';
 $dateDebut = $_POST['date_debut'] ?? '';
@@ -20,12 +36,11 @@ $chambre = $_POST['chambre'] ?? '';
 $message = $_POST['message'] ?? '';
 $activites = $_POST['activites'] ?? [];
 
-/* Transformation des activités en objets */
 $activitesFormatees = [];
-
 foreach ($activites as $activite) {
     $activitesFormatees[] = [
-        'nom' => $activite
+        'nom' => $activite,
+        'prix' => $prixActivites[$activite] ?? 0
     ];
 }
 
@@ -54,6 +69,7 @@ $nouvelleReservation = [
     'date_fin' => $dateFin,
     'nb_personnes' => (int)$nbPersonnes,
     'chambre' => $chambre,
+    'prix_chambre' => $prixChambres[$chambre] ?? 0,
     'activites' => $activitesFormatees,
     'message' => $message,
     'prestations' => [],
